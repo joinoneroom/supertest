@@ -154,7 +154,10 @@ describe('request(app)', function(){
 
     request(app)
     .get('/')
-    .expect(302, function() { done(); });
+    .expect(302, function(error) {
+      (error !== null).should.be.true;
+      done();
+    });
   })
 
   it('should handle socket errors', function(done) {
